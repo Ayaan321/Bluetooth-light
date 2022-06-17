@@ -1,0 +1,23 @@
+void setup() {
+  // put your setup code here, to run once:
+  int led = 13; 
+
+  Serial.begin(9600);
+  pinMode(led,OUTPUT);
+
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  int led = 13;
+  if(Serial.available()>0){
+    char data= Serial.read();
+    switch(data){
+      case 'w': digitalWrite(led,HIGH);break;
+      case 'l': digitalWrite(led,LOW);break;
+      default : break;
+    }
+    Serial.println(data);
+  }
+delay(50);
+}
